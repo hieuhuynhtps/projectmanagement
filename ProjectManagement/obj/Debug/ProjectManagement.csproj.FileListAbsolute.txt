@@ -87,3 +87,7 @@ D:\Project\projectmanagement\ProjectManagement\bin\EntityFramework.dll
 D:\Project\projectmanagement\ProjectManagement\bin\EntityFramework.SqlServer.dll
 D:\Project\projectmanagement\ProjectManagement\bin\EntityFramework.xml
 D:\Project\projectmanagement\ProjectManagement\bin\EntityFramework.SqlServer.xml
+C:\Working\projectmanagement\ProjectManagement\bin\EntityFramework.dll
+C:\Working\projectmanagement\ProjectManagement\bin\EntityFramework.SqlServer.dll
+C:\Working\projectmanagement\ProjectManagement\bin\EntityFramework.xml
+C:\Working\projectmanagement\ProjectManagement\bin\EntityFramework.SqlServer.xml
