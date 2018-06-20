@@ -14,14 +14,12 @@ namespace ProjectManagement.Controllers
     {
         private DbModel db = new DbModel();
 
-        // GET: Department
         public ActionResult Index()
         {
             var pHONGBANs = db.PHONGBANs.Include(p => p.TRUSO_PHONG);
             return View(pHONGBANs.ToList());
         }
 
-        // GET: Department/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -36,16 +34,12 @@ namespace ProjectManagement.Controllers
             return View(pHONGBAN);
         }
 
-        // GET: Department/Create
         public ActionResult Create()
         {
             ViewBag.MaPB = new SelectList(db.TRUSO_PHONGs, "MaPB", "TruSo");
             return View();
         }
 
-        // POST: Department/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaPB,TenPB,TrPhong,NgayNhanChuc")] PHONGBAN pHONGBAN)
@@ -61,7 +55,6 @@ namespace ProjectManagement.Controllers
             return View(pHONGBAN);
         }
 
-        // GET: Department/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -77,9 +70,6 @@ namespace ProjectManagement.Controllers
             return View(pHONGBAN);
         }
 
-        // POST: Department/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaPB,TenPB,TrPhong,NgayNhanChuc")] PHONGBAN pHONGBAN)
@@ -92,32 +82,6 @@ namespace ProjectManagement.Controllers
             }
             ViewBag.MaPB = new SelectList(db.TRUSO_PHONGs, "MaPB", "TruSo", pHONGBAN.MaPB);
             return View(pHONGBAN);
-        }
-
-        // GET: Department/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PHONGBAN pHONGBAN = db.PHONGBANs.Find(id);
-            if (pHONGBAN == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pHONGBAN);
-        }
-
-        // POST: Department/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            PHONGBAN pHONGBAN = db.PHONGBANs.Find(id);
-            db.PHONGBANs.Remove(pHONGBAN);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
