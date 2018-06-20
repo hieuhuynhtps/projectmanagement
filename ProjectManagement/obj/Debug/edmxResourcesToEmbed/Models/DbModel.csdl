@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DUAN">
+    <Key>
+      <PropertyRef Name="MaDA" />
+    </Key>
+    <Property Name="MaDA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenDA" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DiaDiem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaPB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PHONGBAN" Relationship="Self.FK_DUAN_PHONGBAN" FromRole="DUAN" ToRole="PHONGBAN" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HoNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenNV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="Int32" />
+    <Property Name="DienThoai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaPB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PHONGBAN" Relationship="Self.FK_NHANVIEN_PHONGBAN" FromRole="NHANVIEN" ToRole="PHONGBAN" />
+  </EntityType>
+  <EntityType Name="PHONGBAN">
+    <Key>
+      <PropertyRef Name="MaPB" />
+    </Key>
+    <Property Name="MaPB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TenPB" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="TrPhong" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NgayNhanChuc" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="DUANs" Relationship="Self.FK_DUAN_PHONGBAN" FromRole="PHONGBAN" ToRole="DUAN" />
+    <NavigationProperty Name="NHANVIENs" Relationship="Self.FK_NHANVIEN_PHONGBAN" FromRole="PHONGBAN" ToRole="NHANVIEN" />
+    <NavigationProperty Name="TRUSO_PHONG" Relationship="Self.FK_TRUSO_PHONG_PHONGBAN" FromRole="PHONGBAN" ToRole="TRUSO_PHONG" />
+  </EntityType>
+  <EntityType Name="TRUSO_PHONG">
+    <Key>
+      <PropertyRef Name="MaPB" />
+    </Key>
+    <Property Name="MaPB" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TruSo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PHONGBAN" Relationship="Self.FK_TRUSO_PHONG_PHONGBAN" FromRole="TRUSO_PHONG" ToRole="PHONGBAN" />
+  </EntityType>
+  <Association Name="FK_DUAN_PHONGBAN">
+    <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="0..1" />
+    <End Role="DUAN" Type="Self.DUAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGBAN">
+        <PropertyRef Name="MaPB" />
+      </Principal>
+      <Dependent Role="DUAN">
+        <PropertyRef Name="MaPB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_PHONGBAN">
+    <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGBAN">
+        <PropertyRef Name="MaPB" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MaPB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TRUSO_PHONG_PHONGBAN">
+    <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="1" />
+    <End Role="TRUSO_PHONG" Type="Self.TRUSO_PHONG" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGBAN">
+        <PropertyRef Name="MaPB" />
+      </Principal>
+      <Dependent Role="TRUSO_PHONG">
+        <PropertyRef Name="MaPB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbModels" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DUANs" EntityType="Self.DUAN" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="PHONGBANs" EntityType="Self.PHONGBAN" />
+    <EntitySet Name="TRUSO_PHONG" EntityType="Self.TRUSO_PHONG" />
+    <AssociationSet Name="FK_DUAN_PHONGBAN" Association="Self.FK_DUAN_PHONGBAN">
+      <End Role="PHONGBAN" EntitySet="PHONGBANs" />
+      <End Role="DUAN" EntitySet="DUANs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_PHONGBAN" Association="Self.FK_NHANVIEN_PHONGBAN">
+      <End Role="PHONGBAN" EntitySet="PHONGBANs" />
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRUSO_PHONG_PHONGBAN" Association="Self.FK_TRUSO_PHONG_PHONGBAN">
+      <End Role="PHONGBAN" EntitySet="PHONGBANs" />
+      <End Role="TRUSO_PHONG" EntitySet="TRUSO_PHONG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

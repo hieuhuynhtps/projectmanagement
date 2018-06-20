@@ -83,3 +83,7 @@ D:\Project\ProjectManagement\ProjectManagement\obj\Debug\ProjectManagement.cspro
 D:\Project\ProjectManagement\ProjectManagement\obj\Debug\ProjectManagement.csproj.CopyComplete
 D:\Project\ProjectManagement\ProjectManagement\obj\Debug\ProjectManagement.dll
 D:\Project\ProjectManagement\ProjectManagement\obj\Debug\ProjectManagement.pdb
+D:\Project\projectmanagement\ProjectManagement\bin\EntityFramework.dll
+D:\Project\projectmanagement\ProjectManagement\bin\EntityFramework.SqlServer.dll
+D:\Project\projectmanagement\ProjectManagement\bin\EntityFramework.xml
+D:\Project\projectmanagement\ProjectManagement\bin\EntityFramework.SqlServer.xml

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DUAN">
+    <Key>
+      <PropertyRef Name="MaDA" />
+    </Key>
+    <Property Name="MaDA" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenDA" Type="nvarchar(max)" />
+    <Property Name="DiaDiem" Type="nvarchar(max)" />
+    <Property Name="MaPB" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MaNV" />
+    </Key>
+    <Property Name="MaNV" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="HoNV" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenNV" Type="nvarchar" MaxLength="50" />
+    <Property Name="NgaySinh" Type="date" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+    <Property Name="GioiTinh" Type="int" />
+    <Property Name="DienThoai" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaPB" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHONGBAN">
+    <Key>
+      <PropertyRef Name="MaPB" />
+    </Key>
+    <Property Name="MaPB" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TenPB" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="TrPhong" Type="nvarchar" MaxLength="255" />
+    <Property Name="NgayNhanChuc" Type="date" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'Project-Management.dbo.THAMGIA' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="THAMGIA">
+          <Property Name="MaNV" Type="varchar" MaxLength="50" />
+          <Property Name="MaDA" Type="varchar" MaxLength="50" />
+          <Property Name="SoGio" Type="float" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Project-Management.dbo.TRUSO_PHONG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TRUSO_PHONG">
+    <Key>
+      <PropertyRef Name="MaPB" />
+    </Key>
+    <Property Name="MaPB" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TruSo" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK_DUAN_PHONGBAN">
+    <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="0..1" />
+    <End Role="DUAN" Type="Self.DUAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGBAN">
+        <PropertyRef Name="MaPB" />
+      </Principal>
+      <Dependent Role="DUAN">
+        <PropertyRef Name="MaPB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_PHONGBAN">
+    <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGBAN">
+        <PropertyRef Name="MaPB" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MaPB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <!--Errors Found During Generation:
+error 6004: The table 'Project-Management.dbo.THAMGIA' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_THAMGIA_DUAN" />-->
+  <!--Errors Found During Generation:
+error 6004: The table 'Project-Management.dbo.THAMGIA' is referenced by a relationship, but cannot be found.
+        <Association Name="FK_THAMGIA_NHANVIEN" />-->
+  <Association Name="FK_TRUSO_PHONG_PHONGBAN">
+    <End Role="PHONGBAN" Type="Self.PHONGBAN" Multiplicity="1" />
+    <End Role="TRUSO_PHONG" Type="Self.TRUSO_PHONG" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGBAN">
+        <PropertyRef Name="MaPB" />
+      </Principal>
+      <Dependent Role="TRUSO_PHONG">
+        <PropertyRef Name="MaPB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="DUAN" EntityType="Self.DUAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHONGBAN" EntityType="Self.PHONGBAN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TRUSO_PHONG" EntityType="Self.TRUSO_PHONG" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TRUSO_PHONG].[MaPB] AS [MaPB], 
+    [TRUSO_PHONG].[TruSo] AS [TruSo]
+    FROM [dbo].[TRUSO_PHONG] AS [TRUSO_PHONG]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_DUAN_PHONGBAN" Association="Self.FK_DUAN_PHONGBAN">
+      <End Role="PHONGBAN" EntitySet="PHONGBAN" />
+      <End Role="DUAN" EntitySet="DUAN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_PHONGBAN" Association="Self.FK_NHANVIEN_PHONGBAN">
+      <End Role="PHONGBAN" EntitySet="PHONGBAN" />
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TRUSO_PHONG_PHONGBAN" Association="Self.FK_TRUSO_PHONG_PHONGBAN">
+      <End Role="PHONGBAN" EntitySet="PHONGBAN" />
+      <End Role="TRUSO_PHONG" EntitySet="TRUSO_PHONG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
