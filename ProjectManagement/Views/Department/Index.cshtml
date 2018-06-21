@@ -34,12 +34,6 @@
                         <th>
                             Địa chỉ trụ sở
                         </th>
-                        <th>
-                            Trưởng phòng
-                        </th>
-                        <th>
-                            Ngày nhận chức
-                        </th>
                         <th></th>
                     </tr>
                 </thead>
@@ -55,12 +49,6 @@
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.TRUSO_PHONG.TruSo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.TrPhong)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NgayNhanChuc)
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.MaPB }) |

@@ -1,0 +1,42 @@
+﻿@model ProjectManagement.Models.DUAN
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DUAN</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PHONGBAN.TenPB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PHONGBAN.TenPB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenDA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaDiem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaDiem)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

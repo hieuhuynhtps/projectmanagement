@@ -1,3 +1,82 @@
-﻿@{
+﻿@model IEnumerable<ProjectManagement.Models.NHANVIEN>
+
+@{
     ViewBag.Title = "Nhân viên";
 }
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1">Nhân viên</h2>
+            <button class="au-btn au-btn-icon au-btn--blue">
+                <i class='zmdi zmdi-plus'></i>Thêm
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row m-t-25">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-borderless table-striped table-earning" id="tb-employees">
+                <thead>
+                    <tr>
+                        <th>
+                            #
+                        </th>
+                        <th>
+                            Họ và tên
+                        </th>
+                        <th>
+                            Ngày sinh
+                        </th>
+                        <th>
+                            Giới tính
+                        </th>
+                        <th>
+                            Điện thoại
+                        </th>
+                        <th>
+                            Phòng ban
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="tr-shadow">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MaNV)
+                            </td>
+                            <td>
+                                @(item.HoNV + ' '+  item.TenNV)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NgaySinh)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GioiTinh)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DienThoai)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PHONGBAN.TenPB)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MaNV }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.MaNV }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MaNV })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+</table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#tb-employees').DataTable();
+    });
+</script>

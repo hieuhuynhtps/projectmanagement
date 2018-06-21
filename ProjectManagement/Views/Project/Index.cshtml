@@ -1,3 +1,65 @@
-﻿@{
+﻿@model IEnumerable<ProjectManagement.Models.DUAN>
+
+@{
     ViewBag.Title = "Dự án";
 }
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1">Dự án</h2>
+            <button class="au-btn au-btn-icon au-btn--blue">
+                <i class='zmdi zmdi-plus'></i>Thêm
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row m-t-25">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-borderless table-striped table-earning" id="tb-project">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PHONGBAN.TenPB)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.TenDA)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.DiaDiem)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="tr-shadow">
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PHONGBAN.TenPB)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenDA)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DiaDiem)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = item.MaDA }) |
+                                @Html.ActionLink("Details", "Details", new { id = item.MaDA }) |
+                                @Html.ActionLink("Delete", "Delete", new { id = item.MaDA })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+</table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#tb-project').DataTable();
+    });
+</script>
