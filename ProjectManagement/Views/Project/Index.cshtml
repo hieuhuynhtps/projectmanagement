@@ -8,9 +8,11 @@
     <div class="col-md-12">
         <div class="overview-wrap">
             <h2 class="title-1">Dự án</h2>
-            <button class="au-btn au-btn-icon au-btn--blue">
-                <i class='zmdi zmdi-plus'></i>Thêm
-            </button>
+            <a href="@Url.Action("Create","Project")">
+                <button class="au-btn au-btn-icon au-btn--blue">
+                    <i class='zmdi zmdi-plus'></i>Thêm
+                </button>
+            </a>
         </div>
     </div>
 </div>
@@ -20,14 +22,15 @@
             <table class="table table-borderless table-striped table-earning" id="tb-project">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>
-                            @Html.DisplayNameFor(model => model.PHONGBAN.TenPB)
+                            Tên dự án
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.TenDA)
+                            Địa điểm
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.DiaDiem)
+                            Phòng thực hiện
                         </th>
                         <th></th>
                     </tr>
@@ -37,13 +40,16 @@
                     {
                         <tr class="tr-shadow">
                             <td>
-                                @Html.DisplayFor(modelItem => item.PHONGBAN.TenPB)
+                                @Html.DisplayFor(modelItem => item.MaDA)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.TenDA)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.DiaDiem)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PHONGBAN.TenPB)
                             </td>
                             <td>
                                 @Html.ActionLink("Edit", "Edit", new { id = item.MaDA }) |

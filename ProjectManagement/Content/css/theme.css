@@ -14653,3 +14653,6 @@ section {
 .dataTables_wrapper .page-item.active .page-link:hover {
     color: #FFF;
 }
+.dataTables_wrapper {
+    padding: 0px;
+}

@@ -4,21 +4,19 @@
     ViewBag.Title = "Phòng ban";
 }
 
-
-@*<p>
-        @Html.ActionLink("Create New", "Create")
-    </p>*@
 <div class="row">
     <div class="col-md-12">
         <div class="overview-wrap">
             <h2 class="title-1">Phòng ban</h2>
-            <button class="au-btn au-btn-icon au-btn--blue">
-                <i class='zmdi zmdi-plus'></i>Thêm
-            </button>
+            <a href="@Url.Action("Create","Department")">
+                <button class="au-btn au-btn-icon au-btn--blue">
+                    <i class='zmdi zmdi-plus'></i>Thêm
+                </button>
+            </a>
         </div>
     </div>
 </div>
-
+<hr />
 <div class="row m-t-25">
     <div class="col-md-12">
         <div class="table-responsive">
