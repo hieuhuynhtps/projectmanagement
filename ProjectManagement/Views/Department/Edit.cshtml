@@ -1,54 +1,56 @@
 ﻿@model ProjectManagement.Models.PHONGBAN
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "SỬa phòng ban";
 }
-
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>PHONGBAN</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.MaPB)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TenPB, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TenPB, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TenPB, "", new { @class = "text-danger" })
-            </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1">Sửa phòng ban</h2>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TrPhong, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.TrPhong, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.TrPhong, "", new { @class = "text-danger" })
+    </div>
+</div>
+<hr />
+<div class="row m-t-25">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-horizontal">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.MaPB)
+                        <div class="form-group">
+                            <label class="control-label mb-1">Mã phòng ban</label>
+                            @Html.TextBoxFor(model => model.MaPB, new { @class = "form-control", disabled = "disabled" })
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label mb-1">Tên phòng ban</label>
+                            @Html.EditorFor(model => model.TenPB, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TenPB, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label mb-1">Trưởng phòng</label>
+                            @Html.EditorFor(model => model.TrPhong, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TrPhong, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label mb-1">Ngày nhận chức</label>
+                            @Html.EditorFor(model => model.NgayNhanChuc, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NgayNhanChuc, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-actions form-group">
+                            <button type="submit" value="Save" class="btn btn-secondary btn-sm"><i class="fa fa-floppy-o"></i> Lưu</button>
+                        </div>
+                    </div>
+                }
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.NgayNhanChuc, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayNhanChuc, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NgayNhanChuc, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+            <div class="card-footer">
+                <a href="@Url.Action("Index","Department")">
+                    <i class="fa fa-reply"></i> Trở về
+                </a>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

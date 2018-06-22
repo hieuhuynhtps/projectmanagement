@@ -49,9 +49,12 @@
                                 @Html.DisplayFor(modelItem => item.TRUSO_PHONG.TruSo)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.MaPB }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.MaPB }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.MaPB })
+                                <a href="@Url.Action("Edit","Department", new { id = item.MaPB })" class="action-icon">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                                <a href="@Url.Action("Details","Department", new { id = item.MaPB })" class="action-icon">
+                                    <i class="fa fa-info-circle"></i>
+                                </a>
                             </td>
                         </tr>
                     }
