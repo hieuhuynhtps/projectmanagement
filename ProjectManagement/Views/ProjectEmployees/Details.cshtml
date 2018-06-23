@@ -1,0 +1,42 @@
+﻿@model ProjectManagement.Models.THAMGIA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>THAMGIA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DUAN.TenDA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DUAN.TenDA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NHANVIEN.HoNV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHANVIEN.HoNV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoGio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoGio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

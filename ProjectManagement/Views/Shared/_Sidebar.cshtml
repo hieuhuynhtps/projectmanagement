@@ -22,10 +22,18 @@
                         <i class="fas fa-users"></i>Nhân viên
                     </a>
                 </li>
-                <li>
-                    <a class="js-arrow" href="@Url.Action("Index","Project")">
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
                         <i class="fas fa-suitcase"></i>Dự án
                     </a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="@Url.Action("Index","Project")">Dự án</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","ProjectEmployees")">Nhân viên</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>

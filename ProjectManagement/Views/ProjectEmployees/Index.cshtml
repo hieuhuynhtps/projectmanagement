@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ProjectManagement.Models.THAMGIA>
+
+@{
+    ViewBag.Title = "Nhân viên tham gia dự án";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="overview-wrap">
+            <h2 class="title-1">Nhân viên tham gia dự án</h2>
+            <a href="@Url.Action("Create","ProjectEmployees")">
+                <button class="au-btn au-btn-icon au-btn--blue">
+                    <i class='zmdi zmdi-plus'></i>Thêm
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row m-t-25">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-borderless table-striped table-earning" id="tb-porjectemployees">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>
+                            Dự án
+                        </th>
+                        <th>
+                            Nhân viên
+                        </th>
+                        <th>
+                            Số giờ tham gia
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{int i = 1;}
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @(i++)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DUAN.TenDA)
+                            </td>
+                            <td>
+                                @(item.NHANVIEN.HoNV + ' ' + item.NHANVIEN.TenNV)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SoGio)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit","ProjectEmployees", new { id = item.Id })" class="action-icon">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#tb-porjectemployees').DataTable();
+    });
+</script>

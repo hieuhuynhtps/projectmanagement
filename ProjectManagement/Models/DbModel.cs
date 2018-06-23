@@ -16,6 +16,7 @@ namespace ProjectManagement.Models
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PHONGBAN> PHONGBANs { get; set; }
         public virtual DbSet<TRUSO_PHONG> TRUSO_PHONGs { get; set; }
+        public virtual DbSet<THAMGIA> THAMGIAs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -50,6 +51,14 @@ namespace ProjectManagement.Models
 
             modelBuilder.Entity<TRUSO_PHONG>()
                 .Property(e => e.MaPB)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<THAMGIA>()
+                .Property(e => e.MaNV)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<THAMGIA>()
+                .Property(e => e.MaDA)
                 .IsUnicode(false);
         }
     }

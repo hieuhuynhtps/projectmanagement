@@ -154,6 +154,7 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\ProjectEmployeesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -161,6 +162,7 @@
     <Compile Include="Models\DUAN.cs" />
     <Compile Include="Models\NHANVIEN.cs" />
     <Compile Include="Models\PHONGBAN.cs" />
+    <Compile Include="Models\THAMGIA.cs" />
     <Compile Include="Models\TRUSO_PHONG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -428,6 +430,11 @@
     <Content Include="Views\Project\Create.cshtml" />
     <Content Include="Views\Project\Details.cshtml" />
     <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\ProjectEmployees\Create.cshtml" />
+    <Content Include="Views\ProjectEmployees\Delete.cshtml" />
+    <Content Include="Views\ProjectEmployees\Details.cshtml" />
+    <Content Include="Views\ProjectEmployees\Edit.cshtml" />
+    <Content Include="Views\ProjectEmployees\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
