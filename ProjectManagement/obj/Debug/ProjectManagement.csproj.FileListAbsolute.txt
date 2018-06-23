@@ -87,7 +87,7 @@ C:\Working\ProjectManagement\ProjectManagement\bin\Microsoft.AI.DependencyCollec
 C:\Working\ProjectManagement\ProjectManagement\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Working\ProjectManagement\ProjectManagement\bin\Microsoft.AI.WindowsServer.xml
 C:\Working\ProjectManagement\ProjectManagement\bin\Microsoft.AI.Web.xml
-C:\Working\ProjectManagement\ProjectManagement\obj\Debug\ProjectManagement.csprojResolveAssemblyReference.cache
 C:\Working\ProjectManagement\ProjectManagement\obj\Debug\ProjectManagement.csproj.CoreCompileInputs.cache
 C:\Working\ProjectManagement\ProjectManagement\obj\Debug\ProjectManagement.dll
 C:\Working\ProjectManagement\ProjectManagement\obj\Debug\ProjectManagement.pdb
+C:\Working\ProjectManagement\ProjectManagement\obj\Debug\ProjectManagement.csprojResolveAssemblyReference.cache

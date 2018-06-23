@@ -20,20 +20,6 @@ namespace ProjectManagement.Controllers
             return View(pHONGBANs.ToList());
         }
 
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PHONGBAN pHONGBAN = db.PHONGBANs.Find(id);
-            if (pHONGBAN == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pHONGBAN);
-        }
-
         public ActionResult Create()
         {
             ViewBag.MaPB = new SelectList(db.TRUSO_PHONGs, "MaPB", "TruSo");
@@ -72,7 +58,7 @@ namespace ProjectManagement.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaPB,TenPB,TrPhong,NgayNhanChuc")] PHONGBAN pHONGBAN)
+        public ActionResult Edit([Bind(Include = "MaPB,TenPB,TrPhong,NgayNhanChuc,TruSo")] PHONGBAN pHONGBAN)
         {
             if (ModelState.IsValid)
             {

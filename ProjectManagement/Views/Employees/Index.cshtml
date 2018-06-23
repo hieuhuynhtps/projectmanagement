@@ -16,6 +16,7 @@
         </div>
     </div>
 </div>
+<hr />
 <div class="row m-t-25">
     <div class="col-md-12">
         <div class="table-responsive">
@@ -57,7 +58,14 @@
                                 @Html.DisplayFor(modelItem => item.NgaySinh)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.GioiTinh)
+                                @if (item.GioiTinh == 1)
+                                {
+                                    <span>Nam</span>
+                                }
+                                else
+                                {
+                                    <span>Nữ</span>
+                                }
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.DienThoai)
@@ -66,9 +74,9 @@
                                 @Html.DisplayFor(modelItem => item.PHONGBAN.TenPB)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.MaNV }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.MaNV }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.MaNV })
+                                <a href="@Url.Action("Edit","Employees", new { id = item.MaNV })" class="action-icon">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </a>
                             </td>
                         </tr>
                     }

@@ -11,7 +11,6 @@ namespace ProjectManagement.Models
         [Key]
         [StringLength(50)]
         public string MaPB { get; set; }
-
         public string TruSo { get; set; }
 
         public virtual PHONGBAN PHONGBAN { get; set; }

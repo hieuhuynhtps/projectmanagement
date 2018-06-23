@@ -37,7 +37,7 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label mb-1">Ngày nhận chức</label>
-                            @Html.EditorFor(model => model.NgayNhanChuc, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.TextBoxFor(model => model.NgayNhanChuc, "{0:dd/MM/yyyy}", new { @class = "form-control" })
                             @Html.ValidationMessageFor(model => model.NgayNhanChuc, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-actions form-group">

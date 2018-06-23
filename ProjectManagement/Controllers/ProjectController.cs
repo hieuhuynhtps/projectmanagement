@@ -84,30 +84,6 @@ namespace ProjectManagement.Controllers
             return View(dUAN);
         }
 
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DUAN dUAN = db.DUANs.Find(id);
-            if (dUAN == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dUAN);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            DUAN dUAN = db.DUANs.Find(id);
-            db.DUANs.Remove(dUAN);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

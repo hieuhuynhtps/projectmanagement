@@ -20,7 +20,7 @@ namespace ProjectManagement.Models
         public string TenNV { get; set; }
 
         [Column(TypeName = "date")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime? NgaySinh { get; set; }
 
         [StringLength(255)]

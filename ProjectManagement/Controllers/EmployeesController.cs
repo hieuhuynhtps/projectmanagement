@@ -20,22 +20,15 @@ namespace ProjectManagement.Controllers
             return View(nHANVIENs.ToList());
         }
 
-        public ActionResult Details(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
-            if (nHANVIEN == null)
-            {
-                return HttpNotFound();
-            }
-            return View(nHANVIEN);
-        }
-
         public ActionResult Create()
         {
+            ViewBag.GioiTinh = new SelectList(
+                new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Nam", Value = "1"},
+                    new SelectListItem { Text = "Nữ", Value = "0"},
+                }, "Value", "Text"
+            );
             ViewBag.MaPB = new SelectList(db.PHONGBANs, "MaPB", "TenPB");
             return View();
         }
@@ -50,7 +43,13 @@ namespace ProjectManagement.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.GioiTinh = new SelectList(
+                new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Nam", Value = "1"},
+                    new SelectListItem { Text = "Nữ", Value = "0"},
+                }, "Value", "Text", nHANVIEN.GioiTinh
+            );
             ViewBag.MaPB = new SelectList(db.PHONGBANs, "MaPB", "TenPB", nHANVIEN.MaPB);
             return View(nHANVIEN);
         }
@@ -66,6 +65,14 @@ namespace ProjectManagement.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.GioiTinh = new SelectList(
+                new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Nam", Value = "1"},
+                    new SelectListItem { Text = "Nữ", Value = "0"},
+
+                }, "Value", "Text", nHANVIEN.GioiTinh
+            );
             ViewBag.MaPB = new SelectList(db.PHONGBANs, "MaPB", "TenPB", nHANVIEN.MaPB);
             return View(nHANVIEN);
         }
@@ -80,32 +87,15 @@ namespace ProjectManagement.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.GioiTinh = new SelectList(
+                new List<SelectListItem>
+                {
+                    new SelectListItem { Text = "Nam", Value = "1"},
+                    new SelectListItem { Text = "Nữ", Value = "0"},
+                }, "Value", "Text", nHANVIEN.GioiTinh
+            );
             ViewBag.MaPB = new SelectList(db.PHONGBANs, "MaPB", "TenPB", nHANVIEN.MaPB);
             return View(nHANVIEN);
-        }
-
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
-            if (nHANVIEN == null)
-            {
-                return HttpNotFound();
-            }
-            return View(nHANVIEN);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
-            db.NHANVIENs.Remove(nHANVIEN);
-            db.SaveChanges();
-            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

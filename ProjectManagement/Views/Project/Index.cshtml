@@ -16,6 +16,7 @@
         </div>
     </div>
 </div>
+<hr />
 <div class="row m-t-25">
     <div class="col-md-12">
         <div class="table-responsive">
@@ -52,9 +53,10 @@
                                 @Html.DisplayFor(modelItem => item.PHONGBAN.TenPB)
                             </td>
                             <td>
-                                @Html.ActionLink("Edit", "Edit", new { id = item.MaDA }) |
-                                @Html.ActionLink("Details", "Details", new { id = item.MaDA }) |
-                                @Html.ActionLink("Delete", "Delete", new { id = item.MaDA })
+                                <a href="@Url.Action("Edit","Project", new { id = item.MaDA })" class="action-icon">
+                                    <i class="fa fa-pencil-square-o"></i>
+                                </a>
+                                @*@Html.ActionLink("Details", "Details", new { id = item.MaDA }) |*@
                             </td>
                         </tr>
                     }
